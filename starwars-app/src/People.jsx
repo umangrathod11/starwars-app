@@ -25,6 +25,13 @@ const People = () => {
       });
   }, []);
 
+  // Fetch related data for each person from the URL
+  const fetchRelatedData = async (url) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  };
+
   return (
     <div>
       <h2>People</h2>
@@ -39,6 +46,9 @@ const People = () => {
               <th>Gender</th>
               <th>Birth Year</th>
               <th>Height</th>
+              <th>Species</th>
+              <th>Films</th>
+              <th>Vehicles</th>
             </tr>
           </thead>
           <tbody>
@@ -49,6 +59,33 @@ const People = () => {
                 <td>{person.gender}</td>
                 <td>{person.birth_year}</td>
                 <td>{person.height}</td>
+                <td>
+                  {person.species.map((speciesUrl) => (
+                    <div key={speciesUrl}>
+                      <a href={speciesUrl} target="_blank" rel="noopener noreferrer">
+                        {speciesUrl}
+                      </a>
+                    </div>
+                  ))}
+                </td>
+                <td>
+                  {person.films.map((filmUrl) => (
+                    <div key={filmUrl}>
+                      <a href={filmUrl} target="_blank" rel="noopener noreferrer">
+                        {filmUrl}
+                      </a>
+                    </div>
+                  ))}
+                </td>
+                <td>
+                  {person.vehicles.map((vehicleUrl) => (
+                    <div key={vehicleUrl}>
+                      <a href={vehicleUrl} target="_blank" rel="noopener noreferrer">
+                        {vehicleUrl}
+                      </a>
+                    </div>
+                  ))}
+                </td>
               </tr>
             ))}
           </tbody>
