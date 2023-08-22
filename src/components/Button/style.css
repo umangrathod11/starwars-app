@@ -1,0 +1,18 @@
+button.red_bordered {
+    border: 2px solid red;
+    background-color: white;
+}
+
+button.success {
+    border: 2px solid green;
+    background-color: white;
+}
+
+button.normal {
+    border:2px solid gainsboro;
+    background-color: white;
+}
+
+button.d1mBtn {
+    padding: 0.75rem;
+}
